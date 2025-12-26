@@ -20,6 +20,9 @@ touch app/config/database.py
 
 pip install psycopg2-binary pymysql
 
+<!-- migrasi db -->
+mkdir -p app/db/migrations
+touch app/db/migrate.py
 
 <!-- RUN APP -->
 uvicorn app.main:app --reload
