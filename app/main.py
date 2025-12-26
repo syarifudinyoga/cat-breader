@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from app.config.database import Database
 from app.db.migrate import Migrator
 from app.models.user import UserCreate
@@ -30,4 +30,17 @@ async def register_user(user: UserCreate):
     return {
         "status": "success", 
         "email": new_user
+    }
+
+@app.post("/login-user")
+async def login_user(user: UserCreate):
+    service = AuthService()
+    token = service.login_user(user.email, user.password)
+
+    if not token:
+        raise HTTPException(status_code=401, detail="Invalid email or password")
+    
+    return {
+        "status": "success",
+        "data": token,
     }

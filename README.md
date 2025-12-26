@@ -33,6 +33,10 @@ touch app/services/auth_service.py
 
 pip install "passlib[bcrypt]"
 
+<!-- JWT -->
+pip install "python-jose[cryptography]"
+
+touch app/utils/jwt.py
 
 <!-- RUN APP -->
 uvicorn app.main:app --reload
