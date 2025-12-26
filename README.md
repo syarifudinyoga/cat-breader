@@ -24,5 +24,15 @@ pip install psycopg2-binary pymysql
 mkdir -p app/db/migrations
 touch app/db/migrate.py
 
+<!-- User Core -->
+mkdir -p app/utils app/repositories app/services app/models
+touch app/utils/password.py
+touch app/models/user.py
+touch app/repositories/user_repo.py
+touch app/services/auth_service.py
+
+pip install "passlib[bcrypt]"
+
+
 <!-- RUN APP -->
 uvicorn app.main:app --reload
